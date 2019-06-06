@@ -25,10 +25,20 @@ len(containers)
 # container.a
 # get the image element in the form of a dictonary(my working example)
 # container.img["title"]
+
+# create a filename, open a file, with W for write
+filename = "products.csv"
+f = open(filename, "w")
+
+# create the headers for the columns
+headers = "brand, product_name, shipping\n"
+# write the 1st line as a header
+f.write(headers)
+
 # same but from the tutorial for the loop
 for container in containers:
 # save it in varable brand
-   # brand = container.div.div.a.img["title"]
+    # brand = container.div.div.a.img["title"]
     # data structure of the object for title container 
     title_container = container.findAll("a", {"class":"item-title"})
     # inside an array of objects to get the text
@@ -41,3 +51,10 @@ for container in containers:
     #print("brand: " + brand)
     print("product_name: " + product_name)
     print("shipping: " + shipping)
+
+    # write the looped data on the csv
+    # brand + "," +
+    f.write(product_name.replace(",", "|") + "," + shipping + "\n")
+
+# close file
+f.close()
